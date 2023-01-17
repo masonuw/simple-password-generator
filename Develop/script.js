@@ -14,24 +14,23 @@ function generatePassword() {
   var numbersOption = window.confirm("Please press OK if numbers are to be included in your password.");
   
   var symbolsOption = window.confirm("Please press OK if symbols are to be included in your password.");
-  
-  let randomPass = '';
-  for (var i = 0; i <= passwordLength; i++)  {
-    if (lowercaseOption == true) {
+
+  for (var i = 0; i <= passwordLength; i++) {
+    if (lowercaseOption === true) {
       randomPass += randomLowercase();
-    }
-    if (uppercaseOption == true) {
+    } else randomPass += '';
+    if (uppercaseOption === true) {
       randomPass += randomUppercase();
-    }
-    if (numbersOption == true) {
+    } else randomPass += '';
+    if (numbersOption === true) {
       randomPass += randomNumber();
-    }
-    if (symbolsOption == true) {
+    } else randomPass += '';
+    if (symbolsOption === true) {
       randomPass += randomSymbol();
-    }  else return window.alert("Please select at least one option.");
+    } else randomPass += '';
+
+    return randomPass;
   }
-  
-  return randomPass.slice(0, passwordLength);
 }
 
 // Write password to the #password input
@@ -46,15 +45,18 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword)
 
 function randomLowercase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+  var lowercaseList = "abcdefghijklmnopqrstuvwxyz";
+  return (Math.floor(Math.random() * lowercaseList.length));
 }
 
 function randomUppercase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+  var uppercaseList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return (Math.floor(Math.random() * uppercaseList.length));
 }
 
 function randomNumber() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 48);
+  var numbersList = "1234567890";
+  return (Math.floor(Math.random() * numbersList.length));
 }
 
 function randomSymbol() {
