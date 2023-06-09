@@ -32,8 +32,9 @@ function generatePassword() {
   var passwordLength = window.prompt("Please enter desired password character length (integers only).");
 
   // Reject any length other than a number
-  if (!isNaN(passwordLength)) () => {
-  }; else return window.alert("Please try again.");
+  if (isNaN(passwordLength)) {
+    return window.alert("Please try again.");
+  }
   
   // Uppercase option
   var uppercaseOption = window.confirm("Please press OK if uppercase letters are to be included in your password.");
@@ -62,6 +63,7 @@ function generatePassword() {
     if (symbolsOption == true) {
       randomPass += randomSymbol();
     } else randomPass + "";
+  }
 
   // Slice password to correct length
   let slicedPass = randomPass.slice(0, passwordLength);
